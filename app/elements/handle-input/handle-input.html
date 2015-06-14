@@ -1,0 +1,44 @@
+<dom-module id="handle-input">
+  <style>
+    :host {
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: 8px; /* Moved from the paper-input-container */
+    }
+    span {
+      align-self: flex-end;
+      padding: 0 8px 4px 0;
+    }
+    paper-input-container {
+      flex: 1 1;
+      padding-bottom: 0;
+    }
+  </style>
+  <template>
+    <span>@</span>
+    <paper-input-container>
+      <label>Twitter handle</label>
+      <input is="iron-input">
+    </paper-input-container>
+  </template>
+</dom-module>
+<script>
+  (function() {
+    Polymer({
+      is: 'handle-input',
+
+      properties: {
+        _handle: {
+          type: String
+        }
+      },
+
+      observers: [
+        '_computeValue(_handle)'
+      ],
+      _computeValue: function(handle) {
+        this.value = handle;
+      }
+    });
+  })();
+</script>
